@@ -226,6 +226,36 @@
     .gcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,74,54,.82) 0%,rgba(43,74,54,.12) 55%,transparent 100%);opacity:0;transition:opacity .4s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem}
     .gcard:hover .gcard-overlay{opacity:1}
     .gcard-tag{position:absolute;top:.75rem;left:.75rem;font-family:'Montserrat',sans-serif;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;background:#C4A882;color:#F7F4EF;padding:.25rem .55rem}
+
+    /* ══ MOBILE RESPONSIVE ══ */
+    @media (max-width: 1023px) {
+      /* Nav */
+      #nav-logo { height: 62px !important; }
+      /* Hero text container — push below the mobile image */
+      .hero-tc { padding-top: 44vh !important; padding-bottom: 3rem !important; }
+      /* Hero text block — center everything */
+      .hero-ti { max-width: 100% !important; text-align: center; }
+      .hero-ti p { max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; }
+      .hero-ti .divider { margin-left: auto !important; margin-right: auto !important; }
+      .hero-ti .flex { justify-content: center !important; }
+      /* Hero heading — prevent overflow on small screens */
+      .hero-h1 { font-size: clamp(2rem, 7.5vw, 2.8rem) !important; }
+      /* Footer logo — reduce on mobile */
+      #footer-logo { height: 110px !important; }
+      /* Pricing sidebar — reduce top padding so it doesn't go off screen */
+      .lg\:col-span-1 .sticky { top: 5.5rem !important; }
+    }
+    @media (max-width: 640px) {
+      /* Feature pillars — stack vertically */
+      .pillars-grid { grid-template-columns: 1fr !important; }
+      .pillar-vdivider { display: none !important; }
+      /* Trust bar — tighter padding on small phones */
+      .trust-item { padding: .75rem 1rem !important; }
+      /* Booking modal header/body — tighter on small phones */
+      .bk-header { padding: 1.25rem 1.25rem 1rem !important; }
+      .bk-body   { padding: 1.25rem !important; }
+      .bk-footer { padding: 1rem 1.25rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -237,7 +267,7 @@
   <!-- ─── NAV ─── -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-cream/96 backdrop-blur-md transition-shadow duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="flex items-center justify-between h-32">
+      <div class="flex items-center justify-between h-20 lg:h-32">
         <a href="#" class="logo-wrap flex-shrink-0"><img id="nav-logo" alt="LEXA Skin and Body" style="height:120px;mix-blend-mode:multiply;" /></a>
         <div class="hidden lg:flex items-center gap-10">
           <a href="#services" class="nav-link">Services</a>
@@ -305,12 +335,21 @@
       </div>
     </div>
 
+    <!-- Mobile hero image — full-width banner, fades to cream at base -->
+    <div class="block lg:hidden" style="position:absolute;top:0;left:0;right:0;height:52vh;overflow:hidden;z-index:3;">
+      <img id="img-hero-mobile" alt="LEXA Skin and Body" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:contrast(1.06) saturate(1.04) brightness(0.96);" />
+      <!-- Gradient fades image into the cream background below -->
+      <div style="position:absolute;bottom:0;left:0;right:0;height:65%;background:linear-gradient(to bottom,transparent,rgba(247,244,239,.88) 65%,#F7F4EF 100%);pointer-events:none;"></div>
+      <!-- Subtle tint behind the nav -->
+      <div style="position:absolute;top:0;left:0;right:0;height:90px;background:linear-gradient(to bottom,rgba(247,244,239,.5),transparent);pointer-events:none;"></div>
+    </div>
+
     <!-- Text content -->
     <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative" style="z-index:5;">
-      <div style="min-height:100vh;display:flex;align-items:center;padding-top:8rem;padding-bottom:3rem;">
-        <div style="max-width:530px;">
+      <div class="hero-tc" style="min-height:100vh;display:flex;align-items:center;padding-top:8rem;padding-bottom:3rem;">
+        <div class="hero-ti" style="max-width:530px;">
 
-          <h1 class="font-heading text-forest leading-none mb-8 fade-up delay-1" style="font-size:clamp(3.2rem,6.5vw,5.5rem);letter-spacing:-0.025em;">
+          <h1 class="hero-h1 font-heading text-forest leading-none mb-8 fade-up delay-1" style="font-size:clamp(3.2rem,6.5vw,5.5rem);letter-spacing:-0.025em;">
             <span style="font-weight:200;">Where </span><span style="font-weight:700;letter-spacing:-.035em;">skin</span><br />
             <span style="font-weight:200;">meets </span><span class="text-shimmer" style="font-style:italic;font-weight:400;">science</span><br />
             <span style="font-weight:200;">and </span><span style="font-weight:700;letter-spacing:-.03em;">beauty.</span>
@@ -344,13 +383,13 @@
   <section style="background:#F7F4EF;padding:0 0 2rem;margin-top:-1px;">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;border:1px solid rgba(196,168,130,0.18);background:rgba(237,234,227,0.38);backdrop-filter:blur(6px);">
-        <div class="flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Certified Technicians</span></div>
+        <div class="trust-item flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Certified Technicians</span></div>
         <div style="width:1px;height:38px;background:rgba(196,168,130,0.22);flex-shrink:0;" class="hidden lg:block"></div>
-        <div class="flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Premium Products</span></div>
+        <div class="trust-item flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Premium Products</span></div>
         <div style="width:1px;height:38px;background:rgba(196,168,130,0.22);flex-shrink:0;" class="hidden lg:block"></div>
-        <div class="flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Personalised Care</span></div>
+        <div class="trust-item flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Personalised Care</span></div>
         <div style="width:1px;height:38px;background:rgba(196,168,130,0.22);flex-shrink:0;" class="hidden lg:block"></div>
-        <div class="flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Call 0423 277 541</span></div>
+        <div class="trust-item flex items-center gap-3" style="padding:.9rem 2rem;flex:1;min-width:160px;justify-content:center;"><svg class="w-4 h-4 text-tan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg><span class="font-heading text-forest text-xs tracking-widest uppercase">Call 0423 277 541</span></div>
       </div>
     </div>
   </section>
@@ -558,21 +597,21 @@
         </svg>
 
         <!-- Three feature pillars -->
-        <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0;max-width:680px;margin:0 auto;border:1px solid rgba(196,168,130,0.20);background:rgba(247,244,239,0.60);backdrop-filter:blur(4px);">
+        <div class="pillars-grid" style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0;max-width:680px;margin:0 auto;border:1px solid rgba(196,168,130,0.20);background:rgba(247,244,239,0.60);backdrop-filter:blur(4px);">
 
           <div style="padding:2rem 2rem;text-align:center;">
             <p class="font-heading text-tan" style="font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1;">6<span style="font-size:1rem;font-weight:300;">+</span></p>
             <p class="font-heading text-forest/50 text-xs tracking-widest uppercase" style="margin-top:.4rem;font-weight:500;">Years of craft</p>
           </div>
 
-          <div style="background:rgba(196,168,130,0.18);"></div>
+          <div class="pillar-vdivider" style="background:rgba(196,168,130,0.18);"></div>
 
           <div style="padding:2rem 2rem;text-align:center;">
             <p class="font-heading text-tan" style="font-size:1.1rem;font-weight:600;letter-spacing:-.01em;line-height:1.2;">100%<br /><span style="font-size:.75rem;font-weight:300;letter-spacing:.05em;color:rgba(43,74,54,0.5);">TAILORED</span></p>
             <p class="font-heading text-forest/50 text-xs tracking-widest uppercase" style="margin-top:.4rem;font-weight:500;">To you</p>
           </div>
 
-          <div style="background:rgba(196,168,130,0.18);"></div>
+          <div class="pillar-vdivider" style="background:rgba(196,168,130,0.18);"></div>
 
           <div style="padding:2rem 2rem;text-align:center;">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4A882" stroke-width="1.3" style="margin:0 auto .4rem;display:block;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -619,37 +658,37 @@
         <div class="lg:col-span-2">
 
           <!-- NAILS -->
-          <div id="cat-nails" class="bg-cloud p-8">
+          <div id="cat-nails" class="bg-cloud p-5 md:p-8">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Nails</h3>
             <div id="svc-nails"></div>
           </div>
 
           <!-- EYES -->
-          <div id="cat-eyes" class="bg-cloud p-8" style="display:none">
+          <div id="cat-eyes" class="bg-cloud p-5 md:p-8" style="display:none">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Eyes & Brows</h3>
             <div id="svc-eyes"></div>
           </div>
 
           <!-- MICRODERMABRASION -->
-          <div id="cat-microderm" class="bg-cloud p-8" style="display:none">
+          <div id="cat-microderm" class="bg-cloud p-5 md:p-8" style="display:none">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Diamond Microdermabrasion</h3>
             <div id="svc-microderm"></div>
           </div>
 
           <!-- FACIALS -->
-          <div id="cat-facials" class="bg-cloud p-8" style="display:none">
+          <div id="cat-facials" class="bg-cloud p-5 md:p-8" style="display:none">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Facial Treatments</h3>
             <div id="svc-facials"></div>
           </div>
 
           <!-- SPRAY TAN -->
-          <div id="cat-spraytan" class="bg-cloud p-8" style="display:none">
+          <div id="cat-spraytan" class="bg-cloud p-5 md:p-8" style="display:none">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Spray Tan</h3>
             <div id="svc-spraytan"></div>
           </div>
 
           <!-- WAXING -->
-          <div id="cat-waxing" class="bg-cloud p-8" style="display:none">
+          <div id="cat-waxing" class="bg-cloud p-5 md:p-8" style="display:none">
             <h3 class="font-heading text-forest text-xs tracking-widest2 uppercase mb-5 pb-3 border-b border-tan/25">Waxing</h3>
             <div id="svc-waxing"></div>
           </div>
@@ -914,9 +953,11 @@
     document.getElementById('footer-logo').src = base+'LEXALOGO.PNG';
     var pl = document.getElementById('pricing-logo'); if(pl) pl.src = base+'LEXALOGO.PNG';
     var bl = document.getElementById('booking-logo'); if(bl) bl.src = base+'LEXALOGO.PNG';
-    // Hero photo
+    // Hero photo (desktop + mobile)
     var hero = document.getElementById('img-hero');
     if(hero) hero.src = base+'Photoroom_20260601_092739.PNG';
+    var heroMobile = document.getElementById('img-hero-mobile');
+    if(heroMobile) heroMobile.src = base+'Photoroom_20260601_092739.PNG';
     // Before/after marquee — SS series + seamless duplicates
     for(var i=1;i<=6;i++){
       var el  = document.getElementById('img-ss'+i);
@@ -947,7 +988,7 @@
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){
       var t=document.querySelector(this.getAttribute('href'));
-      if(t){ e.preventDefault(); window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-128,behavior:'smooth'}); }
+      if(t){ e.preventDefault(); var navH=document.getElementById('navbar').offsetHeight; window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-navH,behavior:'smooth'}); }
     });
   });
 
@@ -1144,7 +1185,7 @@
     var tab = document.querySelector('[onclick*="showCat(\''+key+'\'"]');
     if(tab) showCat(key, tab);
     var el = document.getElementById('pricing');
-    if(el) window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-96, behavior:'smooth'});
+    if(el) window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-document.getElementById('navbar').offsetHeight, behavior:'smooth'});
   }
 
   // ═══════════════════════════════════════════════
